@@ -1,0 +1,42 @@
+.footer {
+    background: #1d1d1d; /* Background color */
+    color: #fff; /* Text color */
+}
+
+.footer h5 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.footer p, .footer ul {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer a {
+    color: #ffffff; /* Footer links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #2c009c; /* Hover color for links */
+}
+
+.footer .social-icons a {
+    font-size: 18px;
+    display: inline-block;
+    margin-right: 10px;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.footer .social-icons a:hover {
+    color: #ffc107;
+}
+
+.footer .container {
+    max-width: 1140px;
+}
