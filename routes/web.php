@@ -28,3 +28,21 @@ Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.de
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// route do FAQ
+Route::get('/faq', function () {
+    return view('/quickLinks/faq');
+});
+
+// route do formularza kontaktowego
+Route::get('/contactForm', function () {
+    return view('quickLinks/contact');
+});
+
+
+use App\Http\Controllers\ContactController;
+
+Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.show');
+Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
+
