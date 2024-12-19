@@ -16,6 +16,7 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
+    <!-- Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
 </head>
@@ -58,6 +59,8 @@
                                     Hello, {{ Auth::user()->name }} {{ Auth::user()->surname }}!
                                 </a>
 
+
+
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -70,11 +73,34 @@
                                     </form>
                                 </div>
                             </li>
+
+                            <!-- Settings icon -->
+                            @if (auth()->check() && auth()->user()->isAdmin())
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        <i class="fa fa-cog" aria-hidden="true"></i>
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="/users">
+                                            {{ __('User list') }}
+                                        </a>
+                                    </div>
+                                </li>
+                            @endif
+                        
                         @endguest
+
                     </ul>
                 </div>
             </div>
         </nav>
+
+        @if (session('error'))
+            <div class="d-flex align-items-center justify-content-center" style="color: red; font-size:30px;">
+                {{ session('error') }}
+            </div>
+        @endif
 
         <main class="py-4">
             @yield('content')
