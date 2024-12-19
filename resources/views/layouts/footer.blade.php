@@ -18,7 +18,7 @@
                 <ul class="list-unstyled">
                     <li><a href="{{ route('home') }}" class="text-white">Home</a></li>
                     <li><a href="#" class="text-white">Shop</a></li>
-                    <li><a href="/contactForm" class="text-white">Contact Us</a></li>
+                    <li><a href="/contact-form" class="text-white">Contact Us</a></li>
                     <li><a href="/faq" class="text-white">FAQ</a></li>
                 </ul>
             </div>
