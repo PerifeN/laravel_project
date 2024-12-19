@@ -23,7 +23,17 @@ Route::get('/users', [UserController::class, 'index'])
     ->middleware('admin')
     ->name('users.index');
 
-Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::delete('/users/{id}', [UserController::class, 'destroy'])
+    ->middleware('admin')
+    ->name('users.destroy');
+
+Route::get('/users/{id}/edit', [UserController::class, 'edit'])
+    ->middleware('admin')
+    ->name('users.edit');
+
+Route::put('/users/{id}', [UserController::class, 'update'])
+    ->middleware('admin')
+    ->name('users.update');
 
 Auth::routes();
 
