@@ -74,7 +74,7 @@
                                 </div>
                             </li>
 
-                            <!-- Settings icon -->
+                            <!-- Settings icon /app/model/user -> IsAdmin -->
                             @if (auth()->check() && auth()->user()->isAdmin())
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
