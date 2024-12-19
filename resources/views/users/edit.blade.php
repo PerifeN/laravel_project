@@ -7,6 +7,7 @@
                 <div class="card">
                     <div class="card-header">Currently editing: {{ $user->name }} ({{ $user->email }})</div>
                     <div class="card-body">
+
                                <!-- Wyświetlanie błędów walidacji -->
                                 @if ($errors->any())
                                 <div style="color: red;">
@@ -15,8 +16,8 @@
                                             <li>{{ $error }}</li>
                                         @endforeach
                                     </ul>
-                                @endif
                                 </div>
+                            @endif
 
                             <!-- Formularz edycji -->
                             <form action="{{ route('users.update', $user->id) }}" method="POST">
