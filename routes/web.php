@@ -46,13 +46,12 @@ Route::get('/faq', function () {
 });
 
 // route do formularza kontaktowego
-Route::get('/contactForm', function () {
-    return view('quickLinks/contact');
+Route::get('/contact-form', function () {
+    return view('quickLinks/contact-form');
 });
+
 
 
 use App\Http\Controllers\ContactController;
 
-Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.show');
-Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
-
+Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');

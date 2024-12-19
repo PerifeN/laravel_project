@@ -20,9 +20,13 @@ class ContactMail extends Mailable
     public function build()
     {
         return $this->subject('Contact Form Submission')
-                    ->from($this->data['email'], $this->data['name'])
-                    ->view('emails.contactMail') 
-                    ->with('data', $this->data);
+                    ->from('no-reply@example.com', 'Contact Form')
+                    ->view('emails.contactMail') // Ensure this path exists
+                    ->with('data', [
+                        'name' => 'Test Name',
+                        'email' => 'test@example.com',
+                        'message' => 'This is a test message.',
+                    ]);
     }
 }
 
