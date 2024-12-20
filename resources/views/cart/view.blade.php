@@ -9,7 +9,7 @@
                     <div class="card-body=">
                         @if(empty($cart))
                             <p class="m-3">Empty.</p>
-                            <a href="{{ route('products.index') }}" class="btn btn-primary m-3">Go back</a>
+                            <a href="{{ route('products.index') }}" class="btn btn-primary m-3">Go to products</a>
                         @else
                             <table class="table">
                                 <thead>
@@ -48,7 +48,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <a href="{{ route('products.index') }}" class="btn btn-primary m-3">Go back</a>
+                            <a href="{{ route('products.index') }}" class="btn btn-primary m-3">Go to products</a>
                         @endif
 
                         @if (session('success'))

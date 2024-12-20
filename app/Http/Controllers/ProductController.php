@@ -128,7 +128,7 @@ class ProductController extends Controller
             session()->put('cart', $cart);
         }
 
-        return redirect()->route('cart.view')->with('success', '+');
+        return redirect()->route('cart.view')->with('success', 'Added item do basket');
     }
 
     public function decreaseQuantity($id)
@@ -145,7 +145,7 @@ class ProductController extends Controller
             session()->put('cart', $cart);
         }
 
-        return redirect()->route('cart.view')->with('success', '-');
+        return redirect()->route('cart.view')->with('success', 'Removed item do basket');
     }
 
 

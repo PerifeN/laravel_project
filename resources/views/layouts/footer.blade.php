@@ -16,7 +16,7 @@
             <div class="col-md-4">
                 <h5 class="mb-3">Quick Links</h5>
                 <ul class="list-unstyled">
-                    <li><a href="{{ route('home') }}" class="text-white">Home</a></li>
+                    <li><a href="{{ route('home') }}" class="text-white">Login site</a></li>
                     <li><a href="/products" class="text-white">Shop</a></li>
                     <li><a href="/contact-form" class="text-white">Contact Us</a></li>
                     <li><a href="/faq" class="text-white">FAQ</a></li>
