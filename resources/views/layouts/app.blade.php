@@ -19,6 +19,8 @@
     <!-- Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="app.css">
+
 </head>
 <body>
     <div id="app">
@@ -91,9 +93,24 @@
                                     </div>
                                 </li>
                             @endif
+
+                            <!-- Basked icon for authenticated users -->
+                            @if (auth()->check())
+
+                                <li class="nav-item">
+
+                                    <a href="{{ route('cart.view') }}" class="cart-icon">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        @if(isset($cartItemCount) && $cartItemCount > 0)
+                                            <span class="cart-count">{{ $cartItemCount }}</span>
+                                        @endif
+                                    </a>  
+
+                                </li>
+                            @endif
                         
                         @endguest
-
+                        
                     </ul>
                 </div>
             </div>
