@@ -71,3 +71,12 @@ Route::post('/cart/remove/{id}', [ProductController::class, 'removeFromCart'])->
 //+ i - 
 Route::post('/cart/increase/{id}', [ProductController::class, 'increaseQuantity'])->name('cart.increase');
 Route::post('/cart/decrease/{id}', [ProductController::class, 'decreaseQuantity'])->name('cart.decrease');
+
+
+Route::get('/users/create', [UserController::class, 'createUser'])
+    ->middleware('admin')
+    ->name('users.create');
+
+Route::post('/users/store', [UserController::class, 'storeUser'])
+    ->middleware('admin')
+    ->name('users.storeUser');
