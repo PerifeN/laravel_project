@@ -32,7 +32,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Do you offer any discounts or promotions?') }}</div>
                 <div class="card-body">
-                Yes, we frequently run seasonal promotions and offer discounts on select items. Sign up for our newsletter or follow us on social media to stay updated on the latest deals.
+                Yes, we frequently run seasonal promotions and offer discounts on select items. Follow us on social media to stay updated on the latest deals!
                 </div>
             </div>
         </div>
