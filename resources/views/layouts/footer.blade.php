@@ -5,7 +5,7 @@
             <div class="col-md-4">
                 <h5 class="mb-3">About Us</h5>
                 <p>
-                    Welcome to our online shop! We provide high-quality products and excellent customer service to make your shopping experience unforgettable.
+                At Ski Shop, we specialize in offering premium ski equipment and expert advice for skiers of all levels. From beginners to professionals, we have everything you need to hit the slopes with confidence.
                 </p>
                 <p class="mt-3">
                     <a href="#" class="text-white text-decoration-underline">Learn more</a> 
