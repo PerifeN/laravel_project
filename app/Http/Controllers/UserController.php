@@ -92,4 +92,33 @@ class UserController extends Controller
         // Komunikat
         return redirect()->route('users.index')->with('success', 'User successully deleted.');
     }
+
+    public function createUser()
+    {
+        return view('users.create');
+    }
+    
+    public function storeUser(Request $request)
+    {
+        // Walidacja danych wejściowych
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6|confirmed',
+            'role' => 'required|string|in:admin,user',
+        ]);
+    
+        // Tworzenie nowego użytkownika
+        User::create([
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'email' => $request->email,
+            'password' => bcrypt($request->password), // Hashowanie hasła
+            'role' => $request->role,
+        ]);
+    
+        return redirect()->route('users.index')->with('success', 'User has been added successfully.');
+    }
+
 }

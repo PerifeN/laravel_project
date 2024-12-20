@@ -55,3 +55,12 @@ Route::get('/contact-form', function () {
 use App\Http\Controllers\ContactController;
 
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
+
+
+Route::get('/users/create', [UserController::class, 'createUser'])
+    ->middleware('admin')
+    ->name('users.create');
+
+Route::post('/users/store', [UserController::class, 'storeUser'])
+    ->middleware('admin')
+    ->name('users.storeUser');
