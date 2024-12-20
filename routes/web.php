@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,3 +55,19 @@ Route::get('/contact-form', function () {
 use App\Http\Controllers\ContactController;
 
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
+
+
+// kontroler produktów
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::post('/products/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('products.addToCart');
+
+Route::get('/cart', [ProductController::class, 'viewCart'])
+    ->middleware('auth')
+    ->name('cart.view');
+
+Route::post('/cart/remove/{id}', [ProductController::class, 'removeFromCart'])->name('cart.remove');
+
+
+//+ i - 
+Route::post('/cart/increase/{id}', [ProductController::class, 'increaseQuantity'])->name('cart.increase');
+Route::post('/cart/decrease/{id}', [ProductController::class, 'decreaseQuantity'])->name('cart.decrease');
