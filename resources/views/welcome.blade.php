@@ -65,7 +65,7 @@
 
     <!-- Przycisk "Contact Us" -->
     <div class="text-center">
-        <a href="/contact" class="btn btn-primary btn-lg">Contact Us</a>
+        <a href="/contact-form" class="btn btn-primary btn-lg">Contact Us</a>
     </div>
 </div>
 
