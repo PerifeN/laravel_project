@@ -13,6 +13,16 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        User::truncate();
+        
+        // Dodaj użytkownika o ID 1 jako admina
+        User::create([
+            'name' => 'Site',
+            'surname' => 'Admin',
+            'email' => 'admin@admin.pl',
+            'password' => bcrypt('zaq1@WSX'),
+            'role' => 'admin',
+        ]);
         User::factory(20)->create();
     }
 }
