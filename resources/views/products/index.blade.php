@@ -31,6 +31,7 @@
                                                 @else
                                                     <p><a href="{{ route('login') }}">Sign in</a>, to add item to cart.</p>
                                                 @endauth
+                                                
                                             </div>
                                         </div>
                                     </div>
