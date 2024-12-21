@@ -13,7 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all(); // Pobieranie produktów z bazy
+        $products = Product::paginate(12); // Pobieranie produktów z bazy
         return view('products.index', compact('products'));
     }
 
@@ -128,7 +128,7 @@ class ProductController extends Controller
             session()->put('cart', $cart);
         }
 
-        return redirect()->route('cart.view')->with('success', 'Added item do basket');
+        return redirect()->route('cart.view')->with('success', 'Added item to basket');
     }
 
     public function decreaseQuantity($id)
@@ -145,7 +145,7 @@ class ProductController extends Controller
             session()->put('cart', $cart);
         }
 
-        return redirect()->route('cart.view')->with('success', 'Removed item do basket');
+        return redirect()->route('cart.view')->with('success', 'Removed item to basket');
     }
 
 

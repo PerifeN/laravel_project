@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Products') }}</div>
-                    <div class="card-body=">
+                    <div class="card-body">
                             @if(session('success'))
                                 <div class="alert alert-success">
                                     {{ session('success') }}
@@ -35,6 +35,10 @@
                                         </div>
                                     </div>
                                 @endforeach
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                {{ $products->links() }}
                             </div>
                     </div>
                 </div>

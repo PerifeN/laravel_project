@@ -12,7 +12,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all(); //Download all users
+        $users = User::paginate(10); //Download all users
         return view('users.index', compact('users'));
     }
 
