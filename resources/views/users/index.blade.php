@@ -3,14 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10 ">
-
-                @if (session('success'))
-                    <div style="color: green; margin-bottom: 20px;">
-                        {{ session('success') }}
-                    </div>
-                @endif
-
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">{{ __('User list') }}</h5>
@@ -18,6 +11,11 @@
                         <a href="{{ route('users.create') }}" class="btn btn-primary">Add User</a>
                     </div>
                     <div class="card-body">
+                        @if(session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
                         <table class="table table-striped table-hover mr-3">
                             <thead class="table-dark">
                                 <tr>

@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Cart') }}</div>
-                    <div class="card-body=">
+                    <div class="card-body">
                         @if(empty($cart))
                             <p class="m-3">Empty.</p>
                             <a href="{{ route('products.index') }}" class="btn btn-primary m-3">Go to products</a>
@@ -50,13 +50,11 @@
                             </table>
                             <a href="{{ route('products.index') }}" class="btn btn-primary m-3">Go to products</a>
                         @endif
-
-                        @if (session('success'))
-                            <div class="w-25 p-3 alert">
-                                {{ session('success') }}
-                            </div>
-                        @endif
-
+                        @if(session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
                     </div>
                 </div>
             </div>

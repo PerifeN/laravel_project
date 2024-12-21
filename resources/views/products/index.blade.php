@@ -26,12 +26,12 @@
                                                 @auth
                                                     <form method="POST" action="{{ route('products.addToCart', $product->id) }}">
                                                         @csrf
-                                                        <button type="submit" class="btn btn-primary">Add to cart</button>
+                                                        <button type="submit" class="btn btn-success mb-2">Add to cart</button>
                                                     </form>
                                                 @else
                                                     <p><a href="{{ route('login') }}">Sign in</a>, to add item to cart.</p>
                                                 @endauth
-                                                
+                                                <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary">More Information</a>
                                             </div>
                                         </div>
                                     </div>

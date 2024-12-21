@@ -65,14 +65,14 @@ Route::get('/cart', [ProductController::class, 'viewCart'])
     ->middleware('auth')
     ->name('cart.view');
 
-Route::post('/cart/remove/{id}', [ProductController::class, 'removeFromCart'])->name('cart.remove');
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 
-
-//+ i - 
+// cart increase + i - i usuniecie
 Route::post('/cart/increase/{id}', [ProductController::class, 'increaseQuantity'])->name('cart.increase');
 Route::post('/cart/decrease/{id}', [ProductController::class, 'decreaseQuantity'])->name('cart.decrease');
+Route::post('/cart/remove/{id}', [ProductController::class, 'removeFromCart'])->name('cart.remove');
 
-
+// add user 
 Route::get('/users/create', [UserController::class, 'createUser'])
     ->middleware('admin')
     ->name('users.create');
