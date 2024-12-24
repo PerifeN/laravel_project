@@ -90,7 +90,12 @@
                                         <a class="dropdown-item" href="/users">
                                             {{ __('User list') }}
                                         </a>
+                                    
+                                        <a class="dropdown-item" href="/products">
+                                            {{ __('Product list') }}
+                                        </a>
                                     </div>
+
                                 </li>
                             @endif
 
@@ -109,6 +114,7 @@
                                 </li>
                             @endif
                         
+                            
                         @endguest
                         
                     </ul>
