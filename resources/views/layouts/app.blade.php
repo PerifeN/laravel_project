@@ -91,7 +91,7 @@
                                             {{ __('User list') }}
                                         </a>
                                     
-                                        <a class="dropdown-item" href="/products">
+                                        <a class="dropdown-item" href="/productList">
                                             {{ __('Product list') }}
                                         </a>
                                     </div>

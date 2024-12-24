@@ -64,6 +64,11 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         //
+        //$product = Product::findOrFail($id); // znajdowanie
+        //$product->delete(); // Usuń 
+        //
+        // Komunikat
+        //return redirect()->route('product.index')->with('success', 'Product successfully deleted.');
     }
 
     public function addToCart($id)

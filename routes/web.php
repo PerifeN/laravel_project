@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductListController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -80,3 +81,6 @@ Route::get('/users/create', [UserController::class, 'createUser'])
 Route::post('/users/store', [UserController::class, 'storeUser'])
     ->middleware('admin')
     ->name('users.storeUser');
+
+    // Product list 
+    route::get('/productList', [ProductListController::class, 'index'])->name('productList.index');
