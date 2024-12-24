@@ -83,4 +83,7 @@ Route::post('/users/store', [UserController::class, 'storeUser'])
     ->name('users.storeUser');
 
     // Product list 
-    route::get('/productList', [ProductListController::class, 'index'])->name('productList.index');
+    route::get('/productList', [ProductListController::class, 'index'])
+    ->middleware('admin')
+    ->name('productList.index');
+    
