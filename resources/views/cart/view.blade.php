@@ -48,7 +48,22 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <a href="{{ route('products.index') }}" class="btn btn-primary m-3">Go to products</a>
+
+                            <div class="mt-3">
+                                <h5>Summary: <strong>{{ $total }} PLN</strong></h5>
+                            </div>
+
+                            <div class="btn-group">
+                                <a href="{{ route('products.index') }}" class="btn btn-primary m-3">Go to products</a>
+                            </div>
+
+                            <div class="btn-group justify-content-end">
+                            @if(!empty($cart) && count($cart) > 0)
+                                <form action="{{ route('order.create') }}" method="GET">
+                                    <button type="submit" class="btn btn-success">Proceed with order</button>
+                                </form>
+                            @endif
+                            </div>    
                         @endif
                         @if(session('success'))
                                 <div class="alert alert-success">

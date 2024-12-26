@@ -25,3 +25,79 @@
     line-height: 1.2;
     display: inline-block;
 }
+
+
+.custom-table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529; /* Domyślny kolor tekstu */
+    border-collapse: collapse;
+}
+
+.custom-table th,
+.custom-table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.custom-table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.custom-table tbody + tbody {
+    border-top: 2px solid #34393e;
+}
+
+/* Alternatywne wiersze */
+.custom-table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.custom-table-hover tbody tr:hover {
+    color: #212529;
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+/* Ramki */
+.custom-table-bordered {
+    border: 1px solid #14171b;
+}
+
+.custom-table-bordered th,
+.custom-table-bordered td {
+    border: 1px solid #dee2e6;
+}
+
+.custom-table-borderless th,
+.custom-table-borderless td {
+    border: 0;
+}
+
+/* Rozmiar */
+.custom-table-sm th,
+.custom-table-sm td {
+    padding: 0.3rem;
+}
+
+/* Reagowanie */
+.custom-table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.custom-table .status-pending {
+    background-color: #fff3cd !important;
+}
+.custom-table .status-in-progress {
+    background-color: #d1ecf1 !important;
+}
+.custom-table .status-shipped {
+    background-color: #878589 !important;
+}
+.custom-table .status-completed {
+    background-color: #d4edda !important;
+}

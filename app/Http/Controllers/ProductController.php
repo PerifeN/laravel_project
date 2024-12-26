@@ -154,5 +154,20 @@ class ProductController extends Controller
         return redirect()->route('cart.view')->with('success', 'Removed item to basket');
     }
 
+    public function showSummary()
+    {
+        $cart = session()->get('cart', []);
+
+        // Oblicz sumę wartości produktów
+        $total = 0;
+        foreach ($cart as $item) {
+            $total += $item['quantity'] * $item['price'];
+        }
+    
+        //dd($cart, $total);
+
+        // Przekazanie danych do widoku
+        return view('cart.view', compact('cart', 'total'));
+    } 
 
 }

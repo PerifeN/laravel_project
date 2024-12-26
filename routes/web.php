@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductListController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,12 +53,7 @@ Route::get('/contact-form', function () {
     return view('quickLinks/contact-form');
 });
 
-
-
-use App\Http\Controllers\ContactController;
-
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
-
 
 // kontroler produktów
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
@@ -73,6 +70,10 @@ Route::post('/cart/increase/{id}', [ProductController::class, 'increaseQuantity'
 Route::post('/cart/decrease/{id}', [ProductController::class, 'decreaseQuantity'])->name('cart.decrease');
 Route::post('/cart/remove/{id}', [ProductController::class, 'removeFromCart'])->name('cart.remove');
 
+// suma produktów w koszyku
+Route::get('/cart', [ProductController::class, 'showSummary'])
+    ->name('cart.view');
+
 // add user 
 Route::get('/users/create', [UserController::class, 'createUser'])
     ->middleware('admin')
@@ -83,7 +84,25 @@ Route::post('/users/store', [UserController::class, 'storeUser'])
     ->name('users.storeUser');
 
     // Product list 
-    route::get('/productList', [ProductListController::class, 'index'])
+route::get('/productList', [ProductListController::class, 'index'])
     ->middleware('admin')
     ->name('productList.index');
     
+    // Tworzenie i przechowywanie zamowien
+Route::get('/order/create', [OrderController::class, 'create'])
+    ->middleware('auth')
+    ->name('order.create');
+
+Route::post('/order/store', [OrderController::class, 'store'])
+    ->middleware('auth')
+    ->name('order.store');
+
+    // strona ordrers dla admina 
+Route::get('/orders', [OrderController::class, 'index'])
+    ->middleware('admin')
+    ->name('order.index');
+
+    //zmiana statusu zamowqienia
+Route::patch('/orders/{order}/status', [OrderController::class, 'updateStatus'])
+    ->middleware('admin')
+    ->name('orders.updateStatus');

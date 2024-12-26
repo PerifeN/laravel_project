@@ -94,6 +94,10 @@
                                         <a class="dropdown-item" href="/productList">
                                             {{ __('Product list') }}
                                         </a>
+
+                                        <a class="dropdown-item" href="/orders">
+                                            {{ __('Orders') }}
+                                        </a>
                                     </div>
 
                                 </li>
