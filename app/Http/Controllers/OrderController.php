@@ -94,5 +94,15 @@ class OrderController extends Controller
         return redirect()->route('order.index')->with('success', 'Order status changed.');
     }
 
+    public function destroy(Order $order)
+    {
+        // Sprawdź, czy status zamówienia to 'completed'
+        if ($order->status === 'completed') {
+            $order->delete();
+            return redirect()->route('order.index')->with('success', 'Order deleted.');
+        }
+
+        return redirect()->route('order.index')->with('error', 'Order is not set as "completed".');
+    }
 
 }

@@ -106,3 +106,7 @@ Route::get('/orders', [OrderController::class, 'index'])
 Route::patch('/orders/{order}/status', [OrderController::class, 'updateStatus'])
     ->middleware('admin')
     ->name('orders.updateStatus');
+
+Route::delete('/orders/{order}', [OrderController::class, 'destroy'])
+    ->middleware('admin')
+    ->name('orders.destroy');
