@@ -7,6 +7,9 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">{{ __('Product list') }}</h5>
+
+                        <!--BUTTON DODAJĄCY PRODUKT-->
+                        <a href="{{ route('users.create') }}" class="btn btn-primary">Add Product</a>
                     </div>
                         <table class="table table-striped table-hover mr-3">
                             <thead class="table-dark">
