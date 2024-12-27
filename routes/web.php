@@ -38,6 +38,10 @@ Route::put('/users/{id}', [UserController::class, 'update'])
     ->middleware('admin')
     ->name('users.update');
 
+Route::delete('/productList/{id}', [ProductListController::class, 'destroy'])
+    ->middleware('admin')
+    ->name('products.destroy');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

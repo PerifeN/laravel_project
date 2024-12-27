@@ -63,6 +63,10 @@ class ProductListController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $products = Product::findOrFail($id); // znajdowanie
+        $products->delete(); // Usuń 
+
+        // Komunikat
+        return redirect()->route('productList.index')->with('success', 'Product successfully deleted.');
     }
 }

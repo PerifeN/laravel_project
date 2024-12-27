@@ -11,6 +11,11 @@
                         <!--BUTTON DODAJĄCY PRODUKT-->
                         <a href="{{ route('users.create') }}" class="btn btn-primary">Add Product</a>
                     </div>
+                    @if(session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
                         <table class="table table-striped table-hover mr-3">
                             <thead class="table-dark">
                                 <tr>
@@ -31,11 +36,16 @@
                                         <td>{{ $product->created_at }}</td>
                                         <td>{{ $product->updated_at }}</td>
                                         <td>
-                                            <button class="btn btn-danger btn-sm"> X 
-                                        
-                                        </button> 
+                                      <!-- Formularz do usuwania -->
+                                      
+                                        <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger shadow-none color btn-sm" type="submit" onclick="return confirm('Are you sure you want to delete this PRODUCT?')">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </button>
+                                            </form>                                  
                                         </td>
-
                                     </tr>
                                 @endforeach
                             </tbody>
