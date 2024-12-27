@@ -27,8 +27,12 @@
                                         <td>{{ $product->price }}</td>                                        
                                         <td>{{ $product->created_at }}</td>
                                         <td>{{ $product->updated_at }}</td>
-                                        <td> 
-                                     
+                                        <td>
+                                            <button class="btn btn-danger btn-sm"> X 
+                                        
+                                        </button> 
+                                        </td>
+
                                     </tr>
                                 @endforeach
                             </tbody>
