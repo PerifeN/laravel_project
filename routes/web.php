@@ -88,9 +88,17 @@ Route::post('/users/store', [UserController::class, 'storeUser'])
     ->name('users.storeUser');
 
     // Product list 
-route::get('/productList', [ProductListController::class, 'index'])
+    Route::get('/productList', [ProductListController::class, 'index'])
     ->middleware('admin')
     ->name('productList.index');
+
+    Route::get('/productList/create', [ProductListController::class, 'create'])
+    ->middleware('admin')
+    ->name('productList.create');
+
+    Route::post('/productList/store', [ProductListController::class, 'store'])
+    ->middleware('admin')
+    ->name('productList.storeProduct');
     
     // Tworzenie i przechowywanie zamowien
 Route::get('/order/create', [OrderController::class, 'create'])

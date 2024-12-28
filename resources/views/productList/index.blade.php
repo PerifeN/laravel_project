@@ -9,7 +9,7 @@
                         <h5 class="mb-0">{{ __('Product list') }}</h5>
 
                         <!--BUTTON DODAJĄCY PRODUKT-->
-                        <a href="{{ route('users.create') }}" class="btn btn-primary">Add Product</a>
+                        <a href="{{ route('productList.create') }}" class="btn btn-primary">Add Product</a>
                     </div>
                     @if(session('success'))
                                 <div class="alert alert-success">

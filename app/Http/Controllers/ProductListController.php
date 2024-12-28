@@ -24,6 +24,7 @@ class ProductListController extends Controller
     public function create()
     {
         //
+        return view('productList.create'); // Nazwa widoku
     }
 
     /**
@@ -31,8 +32,20 @@ class ProductListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Walidacja danych wejściowych
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'desc' => 'required|string|max:1000',
+            'price' => 'required|numeric',
+        ]);
+    
+        // Tworzenie produktu
+        Product::create($validated);
+    
+        // Przekierowanie z komunikatem sukcesu
+        return redirect()->route('productList.index')->with('success', 'Product has been added successfully.');
     }
+    
 
     /**
      * Display the specified resource.
@@ -69,4 +82,5 @@ class ProductListController extends Controller
         // Komunikat
         return redirect()->route('productList.index')->with('success', 'Product successfully deleted.');
     }
+    
 }
