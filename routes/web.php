@@ -57,6 +57,11 @@ Route::get('/contact-form', function () {
     return view('quickLinks/contact-form');
 });
 
+// route do  gdpr
+Route::get('/gdpr', function () {
+    return view('quickLinks/gdpr');
+});
+
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
 
 // kontroler produktów
