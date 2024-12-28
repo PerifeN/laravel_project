@@ -8,7 +8,7 @@
                 At Ski Shop, we specialize in offering premium ski equipment and expert advice for skiers of all levels. From beginners to professionals, we have everything you need to hit the slopes with confidence.
                 </p>
                 <p class="mt-3">
-                    <a href="#" class="text-white text-decoration-underline">Learn more</a> 
+                    <a href="/gdpr" class="text-white text-decoration-underline">Learn more</a> 
                 </p>
             </div>
 
