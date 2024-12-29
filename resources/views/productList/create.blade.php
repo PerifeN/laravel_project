@@ -19,7 +19,7 @@
                             </div>
                         @endif
 
-                        <!-- Formularz dodawania nowego użytkownika -->
+                        <!-- Formularz dodawania nowego produktu -->
                         <form action="{{ route('productList.storeProduct') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
@@ -29,7 +29,7 @@
                                 <br>
 
                                 <label for="desc">Description:</label>
-                                <input class="form-control" type="text" id="desc" name="desc" required>
+                                <textarea class="form-control" id="desc" name="desc" rows="5" required></textarea>
                                 <br>
 
                                 <label for="price">Price:</label>
