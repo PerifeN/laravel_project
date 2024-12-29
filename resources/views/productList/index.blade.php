@@ -7,10 +7,10 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">{{ __('Product list') }}</h5>
-
                         <!--BUTTON DODAJĄCY PRODUKT-->
                         <a href="{{ route('productList.create') }}" class="btn btn-primary">Add Product</a>
                     </div>
+                    <div class="card-body">
                     @if(session('success'))
                                 <div class="alert alert-success">
                                     {{ session('success') }}
@@ -44,7 +44,7 @@
                                     <td>{{ $product->created_at }}</td>
                                     <td>{{ $product->updated_at }}</td>
                                     <td>
-                                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        
                                         <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display: inline;">
                                             @csrf
                                             @method('DELETE')
@@ -52,6 +52,9 @@
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                             </button>
                                         </form>
+
+                                        <a style="margin-left: 10px;" href="{{ route('products.edit', $product->id) }}"><i class="fas fa-edit"></i></a>
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -64,6 +67,7 @@
                         </div>
 
                     </div>
+                </div>
                 </div>
             </div>
         </div>
