@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -12,12 +11,18 @@
 
                         <div class="d-flex justify-content-center align-items-center" style="width: 300px; height: 300px; border-radius: 5px; border: 1px solid #ddd;">
                             @if($product->image)
-                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 5px;">
+                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 5px; cursor: pointer;">
                             @else
                                 <div style="width: 100%; height: 100%; background-color: #6c757d; color: #fff; display: flex; justify-content: center; align-items: center; border-radius: 5px;">
                                     <p class="text-center">No Image Available</p>
                                 </div>
                             @endif
+                        </div>
+
+                        <div id="imageModal" class="modal">
+                            <span class="close" id="closeModal">&times;</span>
+                            <img class="modal-content" id="modalImage">
+                            <div id="caption"></div>
                         </div>
 
                            
@@ -46,4 +51,34 @@
             </div>
         </div>
 </div>
+
+<script>
+    // Pobierz elementy
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const captionText = document.getElementById('caption');
+    const closeModal = document.getElementById('closeModal');
+
+    // Dodaj funkcję otwierania modala po kliknięciu na obraz
+    document.querySelectorAll('.product-image').forEach(image => {
+        image.addEventListener('click', function() {
+            modal.style.display = 'block';
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt || 'Image preview';
+        });
+    });
+
+    // Zamknięcie modala
+    closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+
+    // Zamknięcie modala po kliknięciu w tło
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+</script>
+
 @endsection
