@@ -34,7 +34,7 @@ class ProductListController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'desc' => 'required|string|max:1000',
-            'price' => ['required', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'price' => ['required', 'regex:/^\d{1,6}(\.\d{1,2})?$/'],
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', 
         ]);
     
@@ -78,7 +78,7 @@ class ProductListController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'desc' => 'required|string|max:1000',
-            'price' => ['required', 'regex:/^\d+(\.\d{1,2})?$/'],
+            'price' => ['required', 'regex:/^\d{1,6}(\.\d{1,2})?$/'],
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
