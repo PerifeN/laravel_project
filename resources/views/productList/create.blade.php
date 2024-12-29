@@ -33,7 +33,7 @@
                                 <br>
 
                                 <label for="price">Price:</label>
-                                <input class="form-control" type="number" id="price" name="price" value="{{ old('price') }}" required>
+                                <input class="form-control" type="text" id="price" name="price" value="{{ old('price') }}" required>
                                 <br>
 
                                 <label for="image">Product Image:</label>

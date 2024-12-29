@@ -20,7 +20,7 @@
                         <thead class="table-dark">
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">Thumbnail</th> <!-- Nowa kolumna -->
+                                <th scope="col">Photo</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Date of creation</th>
