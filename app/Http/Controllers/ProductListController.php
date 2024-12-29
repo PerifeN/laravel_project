@@ -37,7 +37,14 @@ class ProductListController extends Controller
             'name' => 'required|string|max:255',
             'desc' => 'required|string|max:1000',
             'price' => 'required|numeric',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Walidacja obrazu
         ]);
+    
+        // Obsługa obrazu
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('product_images', 'public'); // Zapis do folderu public
+            $validated['image'] = $imagePath;
+        }
     
         // Tworzenie produktu
         Product::create($validated);
@@ -45,6 +52,7 @@ class ProductListController extends Controller
         // Przekierowanie z komunikatem sukcesu
         return redirect()->route('productList.index')->with('success', 'Product has been added successfully.');
     }
+    
     
 
     /**
@@ -58,18 +66,12 @@ class ProductListController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -82,5 +84,40 @@ class ProductListController extends Controller
         // Komunikat
         return redirect()->route('productList.index')->with('success', 'Product successfully deleted.');
     }
+
+    //
+    public function edit($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('productList.edit', compact('product'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Walidacja danych
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'desc' => 'required|string|max:1000',
+            'price' => 'required|numeric',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $product = Product::findOrFail($id);
+
+        // Obsługa aktualizacji obrazu
+        if ($request->hasFile('image')) {
+            if ($product->image) {
+                // Usuń stary obraz
+                Storage::delete('public/' . $product->image);
+            }
+            $validated['image'] = $request->file('image')->store('product_images', 'public');
+        }
+
+        $product->update($validated);
+
+        return redirect()->route('productList.index')->with('success', 'Product updated successfully.');
+    }
+
+
     
 }

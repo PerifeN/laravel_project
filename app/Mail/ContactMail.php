@@ -21,7 +21,7 @@ class ContactMail extends Mailable
     {
         return $this->subject('Contact Form Submission')
                     ->from('no-reply@example.com', 'Contact Form')
-                    ->view('emails.contactMail') // Ensure this path exists
+                    ->view('emails.contactMail')
                     ->with('data', [
                         'name' => 'Test Name',
                         'email' => 'test@example.com',

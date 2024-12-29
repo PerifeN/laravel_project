@@ -127,3 +127,8 @@ Route::patch('/orders/{order}/status', [OrderController::class, 'updateStatus'])
 Route::delete('/orders/{order}', [OrderController::class, 'destroy'])
     ->middleware('admin')
     ->name('orders.destroy');
+
+
+Route::get('/products/{id}/edit', [ProductListController::class, 'edit'])->name('products.edit');
+Route::put('/products/{id}', [ProductListController::class, 'update'])->name('products.update');
+    

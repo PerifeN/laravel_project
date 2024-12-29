@@ -17,38 +17,46 @@
                                 </div>
                             @endif
                         <table class="table table-striped table-hover mr-3">
-                            <thead class="table-dark">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Thumbnail</th> <!-- Nowa kolumna -->
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Date of creation</th>
+                                <th scope="col">Date of update</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($products as $product)
                                 <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Date of creation</th>
-                                    <th scope="col">Date of update</th>                              
-                                    <th scope="col">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($products as $product)
-                                    <tr>
-                                        <td>{{ $product->id }}</td>
-                                        <td>{{ $product->name }}</td>
-                                        <td>{{ $product->price }}</td>                                        
-                                        <td>{{ $product->created_at }}</td>
-                                        <td>{{ $product->updated_at }}</td>
-                                        <td>
-                                      <!-- Formularz do usuwania -->
-                                      
+                                    <td>{{ $product->id }}</td>
+                                    <td>
+                                        @if($product->image)
+                                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" style="width: 50px; height: 50px; object-fit: cover;">
+                                        @else
+                                            <span>No image</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $product->name }}</td>
+                                    <td>{{ $product->price }}</td>
+                                    <td>{{ $product->created_at }}</td>
+                                    <td>{{ $product->updated_at }}</td>
+                                    <td>
+                                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                         <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display: inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger shadow-none color btn-sm" type="submit" onclick="return confirm('Are you sure you want to delete this PRODUCT?')">
-                                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                                </button>
-                                            </form>                                  
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger shadow-none btn-sm" type="submit" onclick="return confirm('Are you sure you want to delete this PRODUCT?')">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+
                         </table>
 
                         <div class="d-flex justify-content-center">

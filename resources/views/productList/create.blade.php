@@ -20,14 +20,13 @@
                         @endif
 
                         <!-- Formularz dodawania nowego użytkownika -->
-                        <form action="{{ route('productList.storeProduct') }}" method="POST">
+                        <form action="{{ route('productList.storeProduct') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
                                 <label for="name">Name:</label>
                                 <input class="form-control" type="text" id="name" name="name" value="{{ old('name') }}" required>
                                 <br>
-                               
 
                                 <label for="desc">Description:</label>
                                 <input class="form-control" type="text" id="desc" name="desc" required>
@@ -35,16 +34,19 @@
 
                                 <label for="price">Price:</label>
                                 <input class="form-control" type="number" id="price" name="price" value="{{ old('price') }}" required>
-                                <br> 
+                                <br>
 
-                                <br><br>
+                                <label for="image">Product Image:</label>
+                                <input class="form-control" type="file" id="image" name="image" accept="image/*">
+                                <br>
+
                                 <button class="btn btn-primary" type="submit">Add Product</button>
                                 <button type="button" class="btn btn-warning">
                                     <a class="text-decoration-none" style="color: black;" href="{{ route('productList.index') }}">Go Back</a>
                                 </button>
                             </div>
-                        </form> 
-                        
+                        </form>
+                                                
                     </div>
                 </div>
             </div>

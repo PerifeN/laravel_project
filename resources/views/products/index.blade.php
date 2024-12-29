@@ -19,8 +19,12 @@
                                         <div class="card mb-4">
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $product->name }}</h5>
-                                                <div class="d-flex justify-content-center align-items-center mx-auto" style="width: 70px; height: 70px; background-color: #4caf50; border: 2px solid #333;">
-                                                    <!-- SAMPLE PHOTO -->
+                                                <div class="d-flex justify-content-center align-items-center mx-auto" style="width: 70px; height: 70px; border: 2px solid #333;">
+                                                    @if($product->image)
+                                                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" style="width: 70px; height: 70px; object-fit: cover;">
+                                                    @else
+                                                        <span>No Image</span>
+                                                    @endif
                                                 </div>
                                                 <p class="card-text">Price: {{ $product->price }} PLN</p>
                                                 @auth
@@ -37,6 +41,8 @@
                                     </div>
                                 @endforeach
                             </div>
+
+
 
                             <div class="d-flex justify-content-center">
                                 {{ $products->links() }}
