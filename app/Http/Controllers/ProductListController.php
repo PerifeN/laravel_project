@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductListController extends Controller
 {
@@ -13,8 +13,7 @@ class ProductListController extends Controller
      */
     public function index()
     {
-        
-        $products = Product::paginate(10); // Pobranie wszystkich produktów z bazy danych        
+        $products = Product::paginate(10); // Pobranie produktów z bazy z paginacją        
         return view('productList.index', compact('products'));
     }
 
@@ -23,8 +22,7 @@ class ProductListController extends Controller
      */
     public function create()
     {
-        //
-        return view('productList.create'); // Nazwa widoku
+        return view('productList.create'); // Widok formularza dodawania produktu
     }
 
     /**
@@ -42,7 +40,7 @@ class ProductListController extends Controller
     
         // Obsługa obrazu
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('product_images', 'public'); // Zapis do folderu public
+            $imagePath = $request->file('image')->store('product_images', 'public'); // Zapis obrazu do folderu public
             $validated['image'] = $imagePath;
         }
     
@@ -52,46 +50,28 @@ class ProductListController extends Controller
         // Przekierowanie z komunikatem sukcesu
         return redirect()->route('productList.index')->with('success', 'Product has been added successfully.');
     }
-    
-    
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('productList.show', compact('product')); // Widok szczegółowy
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-
+    public function edit($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('productList.edit', compact('product')); // Widok edycji produktu
+    }
 
     /**
      * Update the specified resource in storage.
      */
-
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        $products = Product::findOrFail($id); // znajdowanie
-        $products->delete(); // Usuń 
-
-        // Komunikat
-        return redirect()->route('productList.index')->with('success', 'Product successfully deleted.');
-    }
-
-    //
-    public function edit($id)
-    {
-        $product = Product::findOrFail($id);
-        return view('productList.edit', compact('product'));
-    }
-
     public function update(Request $request, $id)
     {
         // Walidacja danych
@@ -113,11 +93,29 @@ class ProductListController extends Controller
             $validated['image'] = $request->file('image')->store('product_images', 'public');
         }
 
+        // Aktualizacja danych produktu
         $product->update($validated);
 
+        // Przekierowanie z komunikatem sukcesu
         return redirect()->route('productList.index')->with('success', 'Product updated successfully.');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        $product = Product::findOrFail($id);
 
-    
+        // Usuń obraz, jeśli istnieje
+        if ($product->image) {
+            Storage::delete('public/' . $product->image);
+        }
+
+        // Usuń produkt
+        $product->delete();
+
+        // Przekierowanie z komunikatem sukcesu
+        return redirect()->route('productList.index')->with('success', 'Product successfully deleted.');
+    }
 }
