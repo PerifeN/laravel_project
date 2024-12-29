@@ -24,7 +24,7 @@
 
                         <div class="form-group">
                             <label for="price">Price:</label>
-                            <input type="number" class="form-control" id="price" name="price" value="{{ $product->price }}" required>
+                            <input type="text" class="form-control" id="price" name="price" value="{{ $product->price }}" required>
                         </div>
 
                         <div class="form-group mt-3">

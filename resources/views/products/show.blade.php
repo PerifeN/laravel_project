@@ -10,11 +10,16 @@
                         <h3 class="card-title">{{ $product->name }}</h3>
                         <p class="card-text"><strong>Price:</strong> {{ $product->price }} PLN</p>
 
-                            <!-- PLACEHOLDFER -->
-                            <div class="d-flex justify-content-center align-items-center" style="width: 300px; height: 300px; background-color: #6c757d; color: #fff; border-radius: 5px;">
-                                <p class="text-center">300x300 Placeholder</p>
-                            </div>
-                            
+                        <div class="d-flex justify-content-center align-items-center" style="width: 300px; height: 300px; border-radius: 5px; border: 1px solid #ddd;">
+                            @if($product->image)
+                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 5px;">
+                            @else
+                                <div style="width: 100%; height: 100%; background-color: #6c757d; color: #fff; display: flex; justify-content: center; align-items: center; border-radius: 5px;">
+                                    <p class="text-center">No Image Available</p>
+                                </div>
+                            @endif
+                        </div>
+
                            
                         <p class="card-text mt-3"><strong>Description:</strong> {{ $product->desc }}</p>
 
